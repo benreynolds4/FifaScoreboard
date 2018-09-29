@@ -1,0 +1,79 @@
+
+	<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100 bs-linebreak">
+				<div class="table100">
+					<table>
+						<thead>
+							<tr class="table100-head">
+								<th class="column2">Person</th>
+								<th class="column3">Wins</th>
+								<th class="column4">Loses</th>
+								<th class="column4">Draws</th>
+								<th class="column5">Win Percentage</th>
+								<!-- <th class="column5">get_weighted_wins</th> -->
+							</tr>
+						</thead>
+						<tbody>
+								
+
+							<% @players.each do |player| %>
+								<tr>
+									<td class="column2"><%= player.name %></td>
+									<td class="column3"><%= player.total_wins %></td>
+									<td class="column4"><%= player.total_loses %></td>
+									<td class="column4"><%= player.total_draws %></td>
+									<td class="column4"><%= player.percentage_wins %></td>
+									<!--<td class="column5"><%= player.get_weighted_wins %></td> -->
+								</tr>
+							<% end %>
+						</tbody>
+
+					</table>
+				</div>
+			</div>
+
+
+			<div class="row margin-top">
+				<div class="col-md-8">
+					<table>
+						<thead>
+							<tr class="table100-head">
+								<th class="column2">Player</th>
+								<th class="column2">Score</th>
+								<th class="column2">Player</th>
+								<th class="column2">Score</th>
+								<th class="column2">Winner</th>
+							</tr>
+						</thead>
+						<tbody>
+
+							<% @matches.each do |match| %>
+								<tr>
+									<% match.scores.each do |score| %>
+										<td class="column2"><%= score.player.name %></td>
+										<td class="column2"><%= score.goals %></td>
+									<% end %>
+									<% if not match.draw? %>
+										<td class="column2"><%= match.winner[0].name if not match.winner.empty? %></td>
+									<% else %>
+										<td class="column2">Draw</td>
+									<% end %>
+									
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+
+				<div class="col-md-4 create_match" >
+					
+						<%= render :partial => 'matches/form',  :match => Match.new %> 
+					
+					
+				</div>
+
+			</div>
+		</div>
+	</div>
+

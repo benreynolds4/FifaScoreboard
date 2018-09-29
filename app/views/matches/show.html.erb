@@ -1,0 +1,34 @@
+	<div class="col-md-12">
+		<table>
+			<thead>
+				<tr class="table100-head">
+					<th class="column2">Player</th>
+					<th class="column2">Score</th>
+					<th class="column2">Player</th>
+					<th class="column2">Score</th>
+					<th class="column2">Winner</th>
+					<th class="column1">Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<% @matches.each do |match| %>
+					<tr>
+						<% match.scores.each do |score| %>
+							<td class="column2"><%= score.player.name %></td>
+							<td class="column2"><%= score.goals %></td>
+						<% end %>
+						<% if not match.draw? %>
+							<td class="column2"><%= match.winner[0].name if not match.winner.empty? %></td>
+						<% else %>
+							<td class="column2">Draw</td>
+						<% end %>
+
+						<td class="column1">                            
+                          <%= link_to 'Destroy Match', [match], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", :remote => true  %>
+                 		</td>
+						
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
