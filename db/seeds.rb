@@ -7,29 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-match = Match.create!
-ben = match.players.create(name: "Tim")
-karl =  match.players.create(name:"Brian")
-s1= match.scores.create(goals: 2, player:ben)
-s2= match.scores.create(goals: 3, player:karl)
 
-match2 = Match.create!
-match2.players << ben
-match2.players << karl
-s3= match2.scores.create(goals: 4, player:ben)
-s4= match2.scores.create(goals: 5, player:karl)
-
-match2 = Match.create!
-match2.players << ben
-match2.players << karl
-s3= match2.scores.create(goals: 2, player:ben)
-s4= match2.scores.create(goals: 4, player:karl)
-
-match2 = Match.create!
-match2.players << ben
-match2.players << karl
-s3= match2.scores.create(goals: 2, player:ben)
-s4= match2.scores.create(goals: 3, player:karl)
-
-
-
+Player.create(name:"Ben")
+Player.create(name:"Rory")
+Player.create(name:"Karl")
+Player.create(name:"Conor")
+Player.create(name:"Tim")
+Player.create(name:"Brian")
